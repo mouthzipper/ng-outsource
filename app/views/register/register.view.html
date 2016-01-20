@@ -1,0 +1,59 @@
+<div class="col-md-6 col-md-offset-3">
+    <h2>Register</h2>
+    <div ng-show="vm.error" class="alert alert-danger">{{vm.error}}</div>
+    <form name="form" ng-submit="vm.register()" role="form">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" class="form-control" ng-model="vm.user.title" placeholder="Title" />
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.title.$dirty && form.firstName.$error.required }">
+            <label for="firstname">First Name</label>
+            <input type="text" name="firstName" id="firstName" class="form-control" ng-model="vm.user.firstName" placeholder="First Name" required />
+            <span ng-show="form.firstName.$dirty && form.firstName.$error.required" class="help-block">First name is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.surname.$dirty && form.surname.$error.required }">
+            <label for="surname">Surname</label>
+            <input type="text" name="surname" id="Text1" class="form-control" ng-model="vm.user.surname" placeholder="Surname" required />
+            <span ng-show="form.surname.$dirty && form.surname.$error.required" class="help-block">Surname is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.street.$dirty && form.street.$error.required }">
+            <label for="street">Street</label>
+            <input type="text" name="street" id="street" class="form-control" ng-model="vm.user.street" placeholder="Street" required />
+            <span ng-show="form.street.$dirty && form.street.$error.required" class="help-block">Street is required</span>
+        </div>
+         <div class="form-group" ng-class="{ 'has-error': form.town.$dirty && form.town.$error.required }">
+            <label for="town">Town</label>
+            <input type="text" name="town" id="town" class="form-control" ng-model="vm.user.town" placeholder="Town" required />
+            <span ng-show="form.town.$dirty && form.town.$error.required" class="help-block">Town is required</span>
+        </div>
+         <div class="form-group" ng-class="{ 'has-error': form.postcode.$dirty && form.postcode.$error.required }">
+            <label for="postcode">Postcode</label>
+            <input type="text" name="postcode" id="postcode" class="form-control" ng-model="vm.user.postcode"  ng-pattern="/^\d+$/"placeholder="Postcode" required />
+            <span ng-show="form.postcode.$dirty && form.postcode.$error.required" class="help-block">Postcode is required</span>
+            <span ng-show="form.postcode.$dirty && form.postcode.$error.pattern" class="help-block">Invalid postcode.</span>
+
+        </div>
+        <div class="form-group">
+            <label for="birthday">Date of Birth</label>
+            <input type="date" name="birthday" id="birthday" class="form-control" ng-model="vm.user.birthday" max="{{vm.minAge | date:'yyyy-MM-dd'}}" required/>
+        </div>
+        <div class="form-group">
+             <input type="checkbox" name="ageValidation " ng-checked="vm.user.birthday" disabled> I declare that I'm 18 and above years old. 
+        </div>   
+        <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+            <label for="username">Username</label>
+            <input type="username" name="username" id="username" class="form-control" ng-model="vm.user.username" placeholder="username" required />
+            <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+        </div>    
+        <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control" ng-model="vm.user.password" placeholder="Password" required />
+            <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+        </div>
+        <div class="form-actions">
+            <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Register</button>
+            <img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <a href="#/login" class="btn btn-link">Cancel</a>
+        </div>
+    </form>
+</div>

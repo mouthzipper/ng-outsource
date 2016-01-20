@@ -1,0 +1,10 @@
+.help-block {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  font-size: 1em;
+  color: #9c322e;
+}
+input.ng-dirty.ng-invalid {
+  color: red;
+  border-color: red;
+}
