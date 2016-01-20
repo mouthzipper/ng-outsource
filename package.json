@@ -1,5 +1,5 @@
 {
-  "name": "x1",
+  "name": "outsource",
   "private": true,
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -34,11 +34,13 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "sinit": "npm install",
+    "init": "npm install",
     "postinstall": "./node_modules/bower/bin/bower install",
     "test": "grunt test"
   },
   "dependencies": {
-    "grunt-cli": "^0.1.13"
+    "bower": "^1.7.2",
+    "grunt-cli": "^0.1.13",
+    "install": "^0.4.1"
   }
 }
